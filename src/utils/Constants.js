@@ -1,18 +1,20 @@
 export const colors = {
-  black: '#232323',
+  black: '#111',
   gold: '#FFD702',
   magenta: '#E600EB',
   blue: '#4266C3',
-  gray: '#848484'
+  gray: '#848484',
+  white: '#E9ECF3',
+  black: '#111'
 };
 
 // theme.js
 export const lightTheme = {
   body: '#E9ECF3',
-  text: '#232323',
+  text: '#111',
 };
 
 export const darkTheme = {
-  body: '#232323',
+  body: '#111',
   text: '#E9ECF3',
 };

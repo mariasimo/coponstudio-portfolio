@@ -2,12 +2,11 @@ import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
 import './App.scss';
 import Hero from './components/hero';
-
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './utils/Constants';
 import { GlobalStyles } from './styled-components/global';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-
+import ReactHtmlParser from 'react-html-parser';
+import Works from './components/works';
 
 const strapi = new Strapi('http://localhost:1337');
 // const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
@@ -16,7 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: [],
+      works: [],
       intro: '',
       menu: [],
       theme: 'light'
@@ -30,13 +29,12 @@ class App extends React.Component {
     } else {
       theme = 'light'
     }
-    console.log(theme)
     this.setState({...this.state, theme})
   }
 
-  fetchProjects = () => {
-    strapi.getEntries('projects').then(projects => {
-      this.setState({ ...this.state, projects });
+  fetchWorks = () => {
+    strapi.getEntries('projects').then(works => {
+      this.setState({ ...this.state, works });
     });
   };
 
@@ -50,55 +48,32 @@ class App extends React.Component {
   fetchMenu = () => {
     strapi.getEntries('navigation-links').then(res => {
       const menu = res;
-      console.log(menu)
       this.setState({ ...this.state, menu });
     });
   };
 
   componentDidMount() {
-    this.fetchProjects();
+    this.fetchWorks();
     this.fetchIntro();
     this.fetchMenu();
   }
 
   render() {
-    const { projects, intro, menu, theme } = this.state;
+    const { works, intro, menu, theme } = this.state;
     return (
 
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
        
-         <div className='App'>
-         <section>
-         <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
-           {projects.map(project => (
-            <article key={project.id}>
-              <h1>{project.Title}</h1>
-              <img
-                src={`http://localhost:1337${project.featureImage.url}`}
-                style={{ maxWidth: '300px' }}
-              />
-            </article>
-          ))}
-        </section>
-      </div>
+        <div className='App'>
+        <section>
+              <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
+              <Works works={works}></Works>
+          </section>
+        </div>
       </>
     </ThemeProvider>
-      // <div className='App'>
-      //   <section>
-      //   <Hero menu={menu} intro={intro}></Hero>
-      //     {projects.map(project => (
-      //       <article key={project.id}>
-      //         <h1>{project.Title}</h1>
-      //         <img
-      //           src={`http://localhost:1337${project.featureImage.url}`}
-      //           style={{ maxWidth: '300px' }}
-      //         />
-      //       </article>
-      //     ))}
-      //   </section>
-      // </div>
     );
   }
 }

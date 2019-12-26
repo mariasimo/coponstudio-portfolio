@@ -4,7 +4,6 @@ const Hero = styled.section`
     height: 100vh;
 
     .container{
-        padding: 1rem;
         display: flex;
         flex-direction: column;
         height: 100%;

@@ -10,6 +10,10 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
     transition: all 0.25s linear;
   }
+
+  section {
+    .container { padding: 2em 3em; }
+  }
   
   nav {
     a{
@@ -27,5 +31,4 @@ export const GlobalStyles = createGlobalStyle`
   .gold{color: ${colors.gold}}
   .underline{text-decoration: underline}
 
-}
-  `
+}`
