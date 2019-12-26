@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
+import Strapi from 'strapi-sdk-javascript/build/main';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const strapi = new Strapi('http://localhost:1337');
+// const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: []
+    };
+  }
+
+  componentDidMount() {
+    strapi.getEntries('projects')
+    .then( projects => {
+      this.setState({ projects })
+    })
+  }
+
+  render() {
+    console.log(this.state)
+    return (
+      <div className='App'>
+        <section>
+          {this.state.projects.map(project => 
+            <article key={project.id}>
+              <img src={`http://localhost:1337${project.featureImage.url}`} style={{maxWidth:'300px'}}/>
+            </article>  
+          )}
+        </section>
+      </div>
+    );
+  }
 }
 
 export default App;
