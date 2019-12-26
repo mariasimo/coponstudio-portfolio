@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'VG5000';
+  font-style: normal;
+  font-weight: 400;
+  src: url('%PUBLIC_URL%/fonts/vg5000/VG5000-Regular_web.eot'); /* IE9 Compat Modes */
+  src: local('VG5000'), local('VG5000'),
+       url('%PUBLIC_URL%/fonts/vg5000/VG5000-Regular_web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('%PUBLIC_URL%/fonts/vg5000/VG5000-Regular_web.woff2') format('woff2'), /* Super Modern Browsers */
+       url('%PUBLIC_URL%/fonts/vg5000/VG5000-Regular_web.woff') format('woff'), /* Modern Browsers */
+       url('%PUBLIC_URL%/fonts/vg5000/VG5000-Regular_web.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('%PUBLIC_URL%/fonts/vg5000/VG5000-Regular_web.otf') format('opentype'), 
+}
+body {
+  font-family: 'VG5000';
+}
