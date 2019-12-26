@@ -1,18 +1,18 @@
 export const colors = {
-  black: '#232323'
+  black: '#232323',
+  gold: '#FFD702',
+  magenta: '#E600EB',
+  blue: '#4266C3',
+  gray: '#848484'
 };
 
 // theme.js
 export const lightTheme = {
-  body: '#E2E2E2',
-  text: '#363537',
-  toggleBorder: '#FFF',
-  gradient: 'linear-gradient(#39598A, #79D7ED)'
+  body: '#E9ECF3',
+  text: '#232323',
 };
 
 export const darkTheme = {
-  body: '#363537',
-  text: '#FAFAFA',
-  toggleBorder: '#6B8096',
-  gradient: 'linear-gradient(#091236, #1E215D)'
+  body: '#232323',
+  text: '#E9ECF3',
 };

@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import {colors} from '../utils/Constants'
+
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -18,4 +20,12 @@ export const GlobalStyles = createGlobalStyle`
       cursor: pointer;
     }
   }
+
+  .blue{color: ${colors.blue}}
+  .gray{color: ${colors.gray}}
+  .magenta{color: ${colors.magenta}}
+  .gold{color: ${colors.gold}}
+  .underline{text-decoration: underline}
+
+}
   `

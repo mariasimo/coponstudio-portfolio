@@ -1,5 +1,4 @@
-import styled, {css} from 'styled-components';
-import {colors} from '../utils/Constants'
+import styled from 'styled-components';
 
 const Hero = styled.section`
     height: 100vh;
@@ -19,7 +18,15 @@ const Hero = styled.section`
             }
         }
 
-        p{margin: 0;}
+        .intro{
+            font-size: 2.5em;
+            line-height: 1.45;
+            max-width: 28em;
+
+            p:first-child{            
+                margin: 0;
+            }
+        }
     }
 `
 

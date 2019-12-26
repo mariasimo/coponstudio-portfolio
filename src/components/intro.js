@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Intro = ({intro}) => (
-    <p>{intro}</p>
+    <div className="intro">{intro}</div>
 )
 
 export default Intro;

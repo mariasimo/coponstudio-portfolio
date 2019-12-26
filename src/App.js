@@ -6,6 +6,8 @@ import Hero from './components/hero';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './utils/Constants';
 import { GlobalStyles } from './styled-components/global';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+
 
 const strapi = new Strapi('http://localhost:1337');
 // const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
@@ -69,7 +71,7 @@ class App extends React.Component {
        
          <div className='App'>
          <section>
-         <Hero menu={menu} intro={intro} toggleTheme={this.toggleTheme}></Hero>
+         <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
            {projects.map(project => (
             <article key={project.id}>
               <h1>{project.Title}</h1>
