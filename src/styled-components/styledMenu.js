@@ -1,5 +1,4 @@
 import styled, {css} from 'styled-components';
-import {colors} from '../utils/Constants'
 
 const Menu = styled.nav`
     display: flex;
@@ -10,7 +9,6 @@ const Menu = styled.nav`
         margin-right: 1em;
         
         a {
-            color: ${colors.black};
             text-decoration: none;
         }
     }

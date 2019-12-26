@@ -9,7 +9,7 @@ const Nav = ({menu, toggleTheme}) => (
             <a href={menuItem.href}>{menuItem.children}</a>
         </li>
         )}
-        <li onClick={toggleTheme}><img src={themeToggler} alt=""/></li>
+        <li onClick={toggleTheme} className="theme-toggler">☼</li>
     </Menu>
 )
 

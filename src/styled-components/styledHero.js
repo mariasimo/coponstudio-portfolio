@@ -2,7 +2,6 @@ import styled, {css} from 'styled-components';
 import {colors} from '../utils/Constants'
 
 const Hero = styled.section`
-    border: 1px solid red;
     height: 100vh;
 
     .container{
@@ -13,6 +12,11 @@ const Hero = styled.section`
 
         nav{
             margin-top: auto;
+            display: flex;
+
+            .theme-toggler {
+               margin-left: auto;
+            }
         }
 
         p{margin: 0;}
