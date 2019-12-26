@@ -9,31 +9,44 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      projects: [],
+      intro: ''
     };
   }
 
+  fetchProjects = () => {
+    strapi.getEntries('projects').then(projects => {
+      this.setState({ ...this.state, projects });
+    });
+  };
+
+  fetchIntro = () => {
+    strapi.getEntries('about-uses').then(res => {
+      const intro = res[0].aboutUs;
+      this.setState({ ...this.state, intro });
+    });
+  };
+
   componentDidMount() {
-    strapi.getEntries('projects')
-    .then( projects => {
-      this.setState({ projects })
-    })
+    this.fetchProjects();
+    this.fetchIntro();
   }
 
   render() {
-    console.log(this.state)
+    const { projects, intro } = this.state;
     return (
       <div className='App'>
-        <p>
-        Copón Studio is a creative couple 🐈🐈 working from sunny Murcia — Spain (mostly) on graphic + digital design projects. Our portfolio includes brand & identity design, ✏ illustration, user interface 👁 design and web development . We like to think at design and code as a ⁂ craftmanship ⁂ and to 💬 work next to people (clients, partners & colleagues) to achieve best results. 
-        </p>
+        <p>{intro}</p>
         <section>
-          {this.state.projects.map(project => 
+          {projects.map(project => (
             <article key={project.id}>
               <h1>{project.Title}</h1>
-              <img src={`http://localhost:1337${project.featureImage.url}`} style={{maxWidth:'300px'}}/>
-            </article>  
-          )}
+              <img
+                src={`http://localhost:1337${project.featureImage.url}`}
+                style={{ maxWidth: '300px' }}
+              />
+            </article>
+          ))}
         </section>
       </div>
     );
