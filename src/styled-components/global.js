@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import {colors} from '../utils/Constants'
+import {colors, randomColor} from '../utils/Constants'
 
 
 export const GlobalStyles = createGlobalStyle`
@@ -15,22 +15,26 @@ export const GlobalStyles = createGlobalStyle`
     color: ${colors.blue};
   }
 
+  a.hover-link{
+    color: ${({ theme }) => theme.text};
+    transition: color ease-in-out 0.3s;
+
+    &:hover{
+      color: ${randomColor}
+    }
+  }
+
   section {
     .container { padding: 2em 3em; }
   }
   
   nav {
-
-    li{ 
-      font-size: 1.5em;
-    }
-    
     a{
       color: ${({ theme }) => theme.text};
     }
-
-    .theme-toggler {
-      cursor: pointer;
+    
+    .logo h1 a{
+      color: ${randomColor}
     }
   }
 

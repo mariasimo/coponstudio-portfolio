@@ -11,7 +11,7 @@ const Footer = ({socialMenu, contact, credits}) => (
         <p className='credits'>{credits}</p>
         <StyledNav>
           {socialMenu.map(menuItem => (
-            <li key={menuItem.id}> <a href={menuItem.href} target="_blank">{menuItem.children}</a></li>
+            <li key={menuItem.id}> <a href={menuItem.href} target="_blank" className='hover-link'>{menuItem.children}</a></li>
           ))}
         </StyledNav>
       </div>
