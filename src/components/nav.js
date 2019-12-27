@@ -11,7 +11,7 @@ class Nav extends React.Component {
       const pixelsScrolled = window.pageYOffset;
       const viewportHeight = window.innerHeight 
 
-      if (topOfWorks < 100) {
+      if (topOfWorks < 150) {
         menuDomEl.classList.add('fixed-menu')
       } else {
         menuDomEl.classList.remove('fixed-menu')
@@ -36,7 +36,7 @@ class Nav extends React.Component {
             </li>
           ) : (
             <li key={menuItem.id}>
-              <a href={menuItem.href} className={'hover-link'}>
+              <a href={menuItem.href} className={`hover-link`}>
                 {menuItem.children}
               </a>
             </li>
