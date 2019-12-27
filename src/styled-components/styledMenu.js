@@ -25,8 +25,6 @@ const Menu = styled.nav`
         left: 3em;
         right: 3em;
         z-index: 999;
-
-        background: #e9ecf3;
         top: 0;
         padding: 1rem 3rem;
         left: 0;

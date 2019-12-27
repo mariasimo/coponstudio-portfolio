@@ -8,12 +8,7 @@ import ReactHtmlParser from 'react-html-parser';
 import HomePage from './components/homePage';
 import WorksPage from './components/worksPage';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 
 const strapi = new Strapi('http://localhost:1337');
 // const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
@@ -28,19 +23,19 @@ class App extends React.Component {
       works: [],
       contact: '',
       credits: '',
-      socialMenu: [],
+      socialMenu: []
     };
   }
 
   toggleTheme = () => {
-    let {theme} = this.state;
-    if(theme === 'light') {
-      theme = 'dark'
+    let { theme } = this.state;
+    if (theme === 'light') {
+      theme = 'dark';
     } else {
-      theme = 'light'
+      theme = 'light';
     }
-    this.setState({...this.state, theme})
-  }
+    this.setState({ ...this.state, theme });
+  };
 
   fetchWorks = () => {
     strapi.getEntries('projects').then(works => {
@@ -76,7 +71,7 @@ class App extends React.Component {
       this.setState({ ...this.state, contact, credits });
     });
   };
-  
+
   componentDidMount() {
     this.fetchWorks();
     this.fetchIntro();
@@ -86,24 +81,23 @@ class App extends React.Component {
   }
 
   render() {
-    const { works, intro, menu, theme, socialMenu, contact, credits } = this.state;
+    const { theme, menu } = this.state;
+    console.log(menu)
     return (
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      
         <GlobalStyles />
-       
+
         <div className='App'>
           <Switch>
             <Route exact path='/'>
-                <HomePage {...this.state}></HomePage>
-            </Route> 
-            <Route exact path="/works">
-                <WorksPage></WorksPage>
+              <HomePage {...this.state} toggleTheme={this.toggleTheme}></HomePage>
+            </Route>
+            <Route exact path='/works'>
+              <WorksPage></WorksPage>
             </Route>
           </Switch>
         </div>
-      
-    </ThemeProvider>
+      </ThemeProvider>
     );
   }
 }

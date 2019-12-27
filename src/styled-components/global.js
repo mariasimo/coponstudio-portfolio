@@ -38,6 +38,10 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .fixed-menu{
+    background-color: ${({ theme }) => theme.body};
+  }
+
   .blue{color: ${colors.blue}}
   .gray{color: ${colors.gray}}
   .magenta{color: ${colors.magenta}}

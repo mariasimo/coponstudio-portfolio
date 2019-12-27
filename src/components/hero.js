@@ -3,11 +3,11 @@ import Nav from './nav';
 import Intro from './intro';
 import StyledHero from '../styled-components/styledHero';
 
-const Hero = ({ menu, intro, toggleTheme, theme }) => (
-  <StyledHero>
+const Hero = (props) => (
+  <StyledHero>  
     <div className='container'>
-      <Intro intro={intro}></Intro>
-      <Nav menu={menu} toggleTheme={toggleTheme} theme={theme}></Nav>
+      <Intro intro={props.intro}></Intro>
+      <Nav {...props}></Nav>
     </div>
   </StyledHero>
 );

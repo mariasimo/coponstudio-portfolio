@@ -1,8 +1,11 @@
 import React from 'react';
 import StyledNav from '../styled-components/styledMenu';
+import { Link } from 'react-router-dom';
+
 
 class Nav extends React.Component {
-  componentDidMount() {
+
+  fixingMenu = () => {
     const worksDomEl = document.querySelector('.works');
     const menuDomEl = document.querySelector('.main-menu');
 
@@ -23,15 +26,19 @@ class Nav extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.fixingMenu();
+  }
+
   render() {
-    const { menu, toggleTheme, theme } = this.props;
+    const { menu, theme, toggleTheme } = this.props;
     return (
       <StyledNav className='main-menu'>
         {menu.map(menuItem =>
           menuItem.logo ? (
             <li key={menuItem.id} className={'logo'}>
               <h1>
-                <a href={menuItem.href}>{menuItem.children}</a>
+                <Link to={menuItem.href}>{menuItem.children}</Link>
               </h1>
             </li>
           ) : (
@@ -42,7 +49,7 @@ class Nav extends React.Component {
             </li>
           )
         )}
-        <li onClick={toggleTheme} className='theme-toggler'>
+        <li className='theme-toggler' onClick={toggleTheme}>
           {theme === 'light' ? '☼' : '☽'}
         </li>
       </StyledNav>
