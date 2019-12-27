@@ -2,24 +2,21 @@ import React from 'react';
 import StyledFooter from '../styled-components/styledFooter';
 import StyledNav from '../styled-components/styledMenu';
 
-
-const Footer = () => (
-    <StyledFooter>
-        <div className='container'>
-            <p className='contact'>
-            If you want to give us $$$$ or say hi: <br></br>
-            hola@coponstudio.es ✉
-            </p>
-
-            <div className="footerInfo">
-                <p className='credits'>Copón Studio. Design, strategy & common sense © 2020.</p>
-                <StyledNav>
-                    <li>Instagram</li>
-                    <li>LinkedIn</li>
-                </StyledNav>
-            </div>
-        </div>
-    </StyledFooter>
+const Footer = ({socialMenu, contact, credits}) => (
+  <StyledFooter>
+      {/* {socialMenu[0].children} */}
+    <div className='container'>
+      <p className='contact'>{contact}</p>
+      <div className='footerInfo'>
+        <p className='credits'>{credits}</p>
+        <StyledNav>
+          {socialMenu.map(menuItem => (
+            <li key={menuItem.id}> <a href={menuItem.href} target="_blank">{menuItem.children}</a></li>
+          ))}
+        </StyledNav>
+      </div>
+    </div>
+  </StyledFooter>
 );
 
 export default Footer;

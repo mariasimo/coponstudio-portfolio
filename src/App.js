@@ -16,10 +16,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      works: [],
-      intro: '',
-      menu: [],
       theme: 'light',
+      menu: [],
+      intro: '',
+      works: [],
+      contact: '',
+      credits: '',
+      socialMenu: [],
     };
   }
 
@@ -53,16 +56,32 @@ class App extends React.Component {
     });
   };
 
+  fetchSocialMenu = () => {
+    strapi.getEntries('social-links').then(res => {
+      const socialMenu = res;
+      this.setState({ ...this.state, socialMenu });
+    });
+  };
+
+  fetchFooter = () => {
+    strapi.getEntries('footer-copies').then(res => {
+      const contact = res[0].Text;
+      const credits = res[1].Text;
+      this.setState({ ...this.state, contact, credits });
+    });
+  };
+  
   componentDidMount() {
     this.fetchWorks();
     this.fetchIntro();
     this.fetchMenu();
+    this.fetchSocialMenu();
+    this.fetchFooter();
   }
 
   render() {
-    const { works, intro, menu, theme } = this.state;
+    const { works, intro, menu, theme, socialMenu, contact, credits } = this.state;
     return (
-
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
@@ -70,7 +89,7 @@ class App extends React.Component {
         <div className='App'>
           <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
           <Works works={works}></Works>
-          <Footer></Footer>
+          <Footer socialMenu={socialMenu} contact={ ReactHtmlParser(contact) } credits={credits}></Footer>
         </div>
       </>
     </ThemeProvider>

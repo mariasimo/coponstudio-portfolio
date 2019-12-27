@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Footer = styled.section`
-    height: 75vh;
+    height: 100vh;
 
     .container{
         padding: 2em 3em;
@@ -11,7 +11,7 @@ const Footer = styled.section`
         height: 100%;
 
         .contact {
-            font-size: 2em;
+            font-size: 2.5em;
         }
 
         .credits {

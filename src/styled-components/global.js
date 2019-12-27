@@ -11,6 +11,10 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.25s linear;
   }
 
+  a.link{
+    color: ${colors.blue};
+  }
+
   section {
     .container { padding: 2em 3em; }
   }
