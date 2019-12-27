@@ -1,13 +1,19 @@
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
 import './App.scss';
-import Hero from './components/hero';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './utils/Constants';
 import { GlobalStyles } from './styled-components/global';
 import ReactHtmlParser from 'react-html-parser';
-import Works from './components/works';
-import Footer from './components/footer';
+import HomePage from './components/homePage';
+import WorksPage from './components/worksPage';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const strapi = new Strapi('http://localhost:1337');
 // const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
@@ -44,7 +50,7 @@ class App extends React.Component {
 
   fetchIntro = () => {
     strapi.getEntries('about-uses').then(res => {
-      const intro = res[0].aboutUs;
+      const intro = ReactHtmlParser(res[0].aboutUs);
       this.setState({ ...this.state, intro });
     });
   };
@@ -65,8 +71,8 @@ class App extends React.Component {
 
   fetchFooter = () => {
     strapi.getEntries('footer-copies').then(res => {
-      const contact = res[0].Text;
-      const credits = res[1].Text;
+      const contact = ReactHtmlParser(res[0].Text);
+      let credits = res[1].Text;
       this.setState({ ...this.state, contact, credits });
     });
   };
@@ -83,15 +89,20 @@ class App extends React.Component {
     const { works, intro, menu, theme, socialMenu, contact, credits } = this.state;
     return (
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
+      
         <GlobalStyles />
        
         <div className='App'>
-          <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme} theme={theme}></Hero>
-          <Works works={works}></Works>
-          <Footer socialMenu={socialMenu} contact={ ReactHtmlParser(contact) } credits={credits}></Footer>
+          <Switch>
+            <Route exact path='/'>
+                <HomePage {...this.state}></HomePage>
+            </Route> 
+            <Route exact path="/works">
+                <WorksPage></WorksPage>
+            </Route>
+          </Switch>
         </div>
-      </>
+      
     </ThemeProvider>
     );
   }

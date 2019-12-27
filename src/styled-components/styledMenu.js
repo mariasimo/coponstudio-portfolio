@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const Menu = styled.nav`
     display: flex;
     -webkit-animation-name: menuAnimBack;
-    -webkit-animation-duration: 0.3s;
+    -webkit-animation-duration: 0.5s;
     animation-name: menuAnimBack;
-    animation-duration: 0.3s;
+    animation-duration: 0.5s;
 
     .theme-toggler {
         cursor: pointer;
@@ -25,17 +25,25 @@ const Menu = styled.nav`
         left: 3em;
         right: 3em;
         z-index: 999;
+
+        background: #e9ecf3;
+        top: 0;
+        padding: 1rem 3rem;
+        left: 0;
+        right: 0;
+        border-bottom: 1px solid #d4d7de;
+    
         -webkit-animation-name: menuAnim; /* Safari 4.0 - 8.0 */
-        -webkit-animation-duration: 0.3s; /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
         animation-name: menuAnim;
-        animation-duration: 0.3s;
+        animation-duration: 0.5s;
 
         .logo{
             display: flex;
             -webkit-animation-name: logoAnim;
-            -webkit-animation-duration: 0.3s;
+            -webkit-animation-duration: 0.5s;
             animation-name: logoAnim;
-            animation-duration: 0.3s;
+            animation-duration: 0.5s;
         }
     }
 
