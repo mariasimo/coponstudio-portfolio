@@ -5,7 +5,6 @@ const Menu = styled.nav`
 
     li{
         list-style-type: none;
-        font-size: 1.5em;
         margin-right: 1em;
         
         a {

@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from './utils/Constants';
 import { GlobalStyles } from './styled-components/global';
 import ReactHtmlParser from 'react-html-parser';
 import Works from './components/works';
+import Footer from './components/footer';
 
 const strapi = new Strapi('http://localhost:1337');
 // const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
@@ -67,10 +68,9 @@ class App extends React.Component {
         <GlobalStyles />
        
         <div className='App'>
-        <section>
-              <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
-              <Works works={works}></Works>
-          </section>
+          <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
+          <Works works={works}></Works>
+          <Footer></Footer>
         </div>
       </>
     </ThemeProvider>

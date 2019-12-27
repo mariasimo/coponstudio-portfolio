@@ -16,6 +16,11 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   nav {
+
+    li{ 
+      font-size: 1.5em;
+    }
+    
     a{
       color: ${({ theme }) => theme.text};
     }

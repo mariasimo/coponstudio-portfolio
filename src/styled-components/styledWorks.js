@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import {colors} from '../utils/Constants'
 
 const Works = styled.section`
+    margin-bottom: 10vh;
+    
     .container{
         margin: 2rem 0;
         display: flex;
