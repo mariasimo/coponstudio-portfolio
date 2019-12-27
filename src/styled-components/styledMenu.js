@@ -9,6 +9,7 @@ const Menu = styled.nav`
 
     .theme-toggler {
         cursor: pointer;
+        margin-left: auto;
     }
 
     .logo{
@@ -29,8 +30,7 @@ const Menu = styled.nav`
         padding: 1rem 3rem;
         left: 0;
         right: 0;
-        border-bottom: 1px solid #d4d7de;
-    
+            
         -webkit-animation-name: menuAnim; /* Safari 4.0 - 8.0 */
         -webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
         animation-name: menuAnim;

@@ -40,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
 
   .fixed-menu{
     background-color: ${({ theme }) => theme.body};
+    transition: all 0.25s linear;
   }
 
   .blue{color: ${colors.blue}}
@@ -47,5 +48,28 @@ export const GlobalStyles = createGlobalStyle`
   .magenta{color: ${colors.magenta}}
   .gold{color: ${colors.gold}}
   .underline{text-decoration: underline}
+
+  // to move later
+  .wrapper-img{
+    width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content:center;
+
+    .width-2{
+      width: 50%;
+    }
+
+    .width-3{
+      width: 33%;
+    }
+
+    img{width: 100%;}
+  }
+
+  .wrapper-text{
+    width: 50%;
+    padding: 4em 0;
+  }
 
 }`

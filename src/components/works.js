@@ -3,10 +3,10 @@ import StyledWorks from '../styled-components/styledWorks';
 import WorkItem from './workItem';
 
 const Works = ({ works }) => (
-  <StyledWorks className="works">
+  <StyledWorks className="works fix-menu-here">
     <div className='container'>
       {works.map(work => (
-        <WorkItem work={work} key={work.id}></WorkItem>
+          <WorkItem work={work} key={work.id}></WorkItem>
       ))}
     </div>
   </StyledWorks>

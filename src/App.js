@@ -1,5 +1,4 @@
 import React from 'react';
-import Strapi from 'strapi-sdk-javascript/build/main';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './utils/Constants';
@@ -7,9 +6,10 @@ import { GlobalStyles } from './styled-components/global';
 import ReactHtmlParser from 'react-html-parser';
 import HomePage from './components/homePage';
 import WorksPage from './components/worksPage';
-
+import WorkSingle from './components/workSingle';
 import { Switch, Route } from 'react-router-dom';
 
+import Strapi from 'strapi-sdk-javascript/build/main';
 const strapi = new Strapi('http://localhost:1337');
 // const strapi = new Strapi(`${process.env.REACT_APP_API_URL}`);
 
@@ -81,12 +81,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { theme, menu } = this.state;
-    console.log(menu)
+    const { theme } = this.state;
     return (
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        
         <GlobalStyles />
-
         <div className='App'>
           <Switch>
             <Route exact path='/'>
@@ -95,8 +94,13 @@ class App extends React.Component {
             <Route exact path='/works'>
               <WorksPage></WorksPage>
             </Route>
+            <Route exact path='/works/:id'
+              render={(match) => <WorkSingle {...match} {...this.state}></WorkSingle>}
+            >
+            </Route>
           </Switch>
         </div>
+
       </ThemeProvider>
     );
   }
