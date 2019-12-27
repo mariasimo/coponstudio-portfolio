@@ -1,19 +1,12 @@
 import React from 'react';
 import StyledWorks from '../styled-components/styledWorks';
+import WorkItem from './workItem';
 
-
-const Works = ({ works }) => (
+const Works = ({ works, toggleInfo, showInfo }) => (
   <StyledWorks>
     <div className='container'>
       {works.map(work => (
-      <article className="work-item" key={work.id}>
-        <div className="wrapper">
-          <div className="overlay">{work.Title}</div>
-          <img
-            src={`http://localhost:1337${work.featureImage.url}`}
-          />
-        </div>
-      </article>
+        <WorkItem work={work} key={work.id}></WorkItem>
       ))}
     </div>
   </StyledWorks>

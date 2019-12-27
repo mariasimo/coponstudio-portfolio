@@ -20,6 +20,8 @@ const Works = styled.section`
                 justify-content: center;
                 color: ${colors.white};
                 font-size: 1.5em;
+                overflow: hidden;
+                cursor: pointer;
 
                 img{width: 100%}
             
@@ -31,6 +33,7 @@ const Works = styled.section`
                     top: 0;
                     left: 0;
                     right: 0;
+                    transition: opacity 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
                 }
             }
         }

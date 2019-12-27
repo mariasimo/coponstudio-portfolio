@@ -18,7 +18,7 @@ class App extends React.Component {
       works: [],
       intro: '',
       menu: [],
-      theme: 'light'
+      theme: 'light',
     };
   }
 

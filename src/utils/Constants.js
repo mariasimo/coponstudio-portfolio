@@ -5,7 +5,6 @@ export const colors = {
   blue: '#4266C3',
   gray: '#848484',
   white: '#E9ECF3',
-  black: '#111'
 };
 
 // theme.js
