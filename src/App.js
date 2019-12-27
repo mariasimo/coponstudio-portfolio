@@ -87,7 +87,7 @@ class App extends React.Component {
         <GlobalStyles />
        
         <div className='App'>
-          <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme}></Hero>
+          <Hero menu={menu} intro={ ReactHtmlParser(intro) } toggleTheme={this.toggleTheme} theme={theme}></Hero>
           <Works works={works}></Works>
           <Footer socialMenu={socialMenu} contact={ ReactHtmlParser(contact) } credits={credits}></Footer>
         </div>

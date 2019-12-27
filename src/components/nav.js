@@ -12,7 +12,6 @@ class Nav extends React.Component {
       const viewportHeight = window.innerHeight 
 
       if (topOfWorks < 100) {
-        console.log('holi');
         menuDomEl.classList.add('fixed-menu')
       } else {
         menuDomEl.classList.remove('fixed-menu')
@@ -25,7 +24,7 @@ class Nav extends React.Component {
   }
 
   render() {
-    const { menu, toggleTheme } = this.props;
+    const { menu, toggleTheme, theme } = this.props;
     return (
       <StyledNav className='main-menu'>
         {menu.map(menuItem =>
@@ -44,7 +43,7 @@ class Nav extends React.Component {
           )
         )}
         <li onClick={toggleTheme} className='theme-toggler'>
-          ☼
+          {theme === 'light' ? '☼' : '☽'}
         </li>
       </StyledNav>
     );
